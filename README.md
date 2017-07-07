@@ -17,6 +17,7 @@ issue: https://github.com/barbar/vortigern/issues/126
   </html>
 </pre>
 
+
 2. change /src/server.tsx
 
 2.1 add coping index.html to directory  /build 
