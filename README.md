@@ -10,7 +10,7 @@ issue: https://github.com/barbar/vortigern/issues/126
       <title>Some title</title>
     </head>
     <body>
-      <h1>Custom Render</h1>
+      Custom Render
       <main id="app"></main>
       <script src='/public/js/app.js'></script>
     </body>
