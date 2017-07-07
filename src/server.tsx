@@ -1,5 +1,4 @@
 const appConfig = require('../config/main');
-
 import * as e6p from 'es6-promise';
 (e6p as any).polyfill();
 import 'isomorphic-fetch';
@@ -22,8 +21,12 @@ const path = require('path');
 const compression = require('compression');
 const Chalk = require('chalk');
 const favicon = require('serve-favicon');
-
 const app = express();
+
+const fs = require('fs');
+fs
+  .createReadStream(path.join(__dirname, '../src/index.html'))
+  .pipe(fs.createWriteStream(path.join(__dirname, 'index.html')));
 
 app.use(compression());
 
@@ -51,11 +54,16 @@ app.use(favicon(path.join(__dirname, 'public/favicon.ico')));
 app.use('/public', express.static(path.join(__dirname, 'public')));
 
 app.get('*', (req, res) => {
+
+  if (appConfig.staticRender) {
+      res.sendFile(path.join(__dirname, 'index.html'));
+      return;
+  }
+
   const location = req.url;
   const memoryHistory = createMemoryHistory(req.originalUrl);
   const store = configureStore(memoryHistory);
   const history = syncHistoryWithStore(memoryHistory, store);
-
   match({ history, routes, location },
     (error, redirectLocation, renderProps) => {
       if (error) {
