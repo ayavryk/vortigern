@@ -3,7 +3,7 @@ issue: https://github.com/barbar/vortigern/issues/126
 
 #### Change:
 1. add /src/index.html
-
+<pre>
   <!DOCTYPE html>
   <html lang="en">
     <head>
@@ -15,6 +15,7 @@ issue: https://github.com/barbar/vortigern/issues/126
       <script src='/public/js/app.js'></script>
     </body>
   </html>
+</pre>
 
 2. change /src/server.tsx
 
