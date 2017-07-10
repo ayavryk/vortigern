@@ -12,7 +12,7 @@ issue: https://github.com/barbar/vortigern/issues/126
     .createReadStream(path.join(__dirname, '../src/index.html'))
     .pipe(fs.createWriteStream(path.join(__dirname, 'index.html')));
  
-2.2 add lines for optional reading index.html 
+2.2 add lines for optional render server/index.html 
 
     app.get('*', (req, res) => {
 
